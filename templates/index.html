@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediksi Risiko Kanker Serviks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">Form Prediksi Risiko Kanker Serviks</h2>
+
+        <form method="POST" class="row g-3">
+            {% for label, name in [
+                ("Age", "age"), ("Number of sexual partners", "partners"),
+                ("First sexual intercourse", "first_sex"), ("Num of pregnancies", "pregnancies"),
+                ("Smokes", "smokes"), ("Smokes (years)", "smoke_years"), ("Smokes (packs/year)", "smoke_packs"),
+                ("Hormonal Contraceptives", "hc"), ("Hormonal Contraceptives (years)", "hc_years"),
+                ("IUD", "iud"), ("IUD (years)", "iud_years"),
+                ("STDs", "stds"), ("STDs (number)", "stds_number"),
+                ("STDs condylomatosis", "stds_condylo"), ("STDs cervical condylomatosis", "stds_cervical"),
+                ("STDs vaginal condylomatosis", "stds_vaginal"), ("STDs vulvo-perineal condylomatosis", "stds_vulvo"),
+                ("STDs syphilis", "stds_syphilis"), ("STDs pelvic inflammatory disease", "stds_pid"),
+                ("STDs genital herpes", "stds_herpes"), ("STDs molluscum contagiosum", "stds_molluscum"),
+                ("STDs AIDS", "stds_aids"), ("STDs HIV", "stds_hiv"),
+                ("STDs Hepatitis B", "stds_hepb"), ("STDs HPV", "stds_hpv"),
+                ("STDs time since first diagnosis", "stds_first_diag"),
+                ("STDs time since last diagnosis", "stds_last_diag"),
+                ("STDs number of diagnosis", "stds_num_diag"),
+                ("Dx Cancer", "dx_cancer"), ("Dx CIN", "dx_cin"),
+                ("Dx HPV", "dx_hpv"), ("Dx", "dx"),
+                ("Hinselmann", "hinselmann"), ("Schiller", "schiller"),
+                ("Cytology", "cytology")
+            ] %}
+            <div class="col-md-4">
+                <label class="form-label">{{ label }}</label>
+                <input type="number" step="any" class="form-control" name="{{ name }}" required>
+            </div>
+            {% endfor %}
+
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary mt-4">Prediksi</button>
+            </div>
+        </form>
+
+        {% if result %}
+        <div class="alert alert-info text-center mt-4" role="alert">
+            <h4>Hasil Prediksi:</h4>
+            <strong>{{ result }}</strong>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
